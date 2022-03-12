@@ -5,12 +5,8 @@ import App from './App.vue'
 // 关闭Vue的生产提示
 Vue.config.productionTip = false;
 
-// Vue.prototype.x = { a: 1, b: 2 };
-
-
-
 // 创建vm
 new Vue({
   el: '#app',
-  render: h => h(App),
+  render: h => h(App)
 })
