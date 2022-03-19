@@ -23,7 +23,7 @@ export default {
     // 一旦挂载完毕，就去订阅一个消息
     this.pubId = pubsub.subscribe("hello", (subName, data) => {
       console.log(this);
-      // console.log("有人发布了hello消息，hello消息的回调执行了", subName, data);
+      console.log("有人发布了hello消息，hello消息的回调执行了", subName, data);
     });
   },
   beforeDestroy() {
