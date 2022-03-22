@@ -27,20 +27,17 @@ export default {
   },
   computed: {
     // 借助mapState生成计算属性，从state中读取数据。（数组写法）
-    ...mapState("countAbout", ["sum", "school", "subject"]),
-    ...mapState("personAbout", ["personList"]),
+    ...mapState(["sum", "school", "subject", "personList"]),
     // 借助mapGetters生成计算属性，从getters中读取数据
-    ...mapGetters("countAbout", ["bigSum"]),
+    ...mapGetters(["bigSum"]),
   },
   methods: {
     // 借助mapMutations生成对应的方法，方法中会调用commit去联系mutations（对象写法）
-    ...mapMutations('countAbout',{ increment: "JIA", decrement: "JIAN" }),
+    ...mapMutations({ increment: "JIA", decrement: "JIAN" }),
     // 借助mapActions生成对应的方法，方法中会调用dispatch去联系Actions（对象写法）
-    ...mapActions('countAbout',{ incrementOdd: "jiaOdd", incrementWait: "jiaWait" }),
+    ...mapActions({ incrementOdd: "jiaOdd", incrementWait: "jiaWait" }),
   },
-  mounted() {
-    console.log(this.$store);
-  },
+  mounted() {},
 };
 </script>
 <style>
