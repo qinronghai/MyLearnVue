@@ -4,8 +4,6 @@ import Vue from "vue";
 import App from './App.vue'
 // 引入插件
 import vueResource from 'vue-resource'
-// 引入store
-import store from './store/index'
 // 关闭Vue的生产提示
 Vue.config.productionTip = false;
 
@@ -14,13 +12,12 @@ Vue.use(vueResource) // vm和所有的vc身上都多了$http
 // Vue.prototype.x = { a: 1, b: 2 };
 
 
+
 // 创建vm
-const vm = new Vue({
+new Vue({
   el: '#app',
   render: h => h(App),
-  store,
   beforeCreate() {
     Vue.prototype.$bus = this // 安装全局事件总线
   },
 })
-console.log(vm);
