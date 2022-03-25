@@ -30,7 +30,7 @@ export default {
   }, */
 
   // 激活
-  /* activated() {
+  activated() {
     console.log('New组件被激活了');
     this.timer = setInterval(() => {
       console.log('@');
@@ -41,7 +41,7 @@ export default {
   deactivated() {
     console.log('New组件失活了');
     clearInterval(this.timer);
-  }, */
+  },
 };
 </script>
 
