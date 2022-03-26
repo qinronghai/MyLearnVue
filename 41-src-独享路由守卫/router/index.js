@@ -28,7 +28,19 @@ const router = new VueRouter({
           name: 'xinwen',
           path: 'news',  // 多级路由下的路径vue会自动生成，不要再加“/”
           component: News,
-          meta: { isAuth: true, title: '新闻' }
+          meta: { isAuth: true, title: '新闻' },
+          beforeEnter: (to, from, next) => {
+            console.log('新闻独享路由守卫', to, from, next);
+            if (to.meta.isAuth) { // 是否需要鉴权
+              if (localStorage.getItem('school') === 'bbgu') {
+                next();
+              } else {
+                alert('无权限查看！');
+              }
+            } else {
+              next();
+            }
+          }
         },
         {
           name: 'xiaoxi',
@@ -54,7 +66,7 @@ const router = new VueRouter({
 
 // 暴露之前先商量商量，加一个路由守卫
 // 全局前置路由守卫----初始化的时候被调用、每次路由切换之前被调用
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
   console.log('前置路由守卫', to, from, next);
   // next();  // *
   if (to.meta.isAuth) { // 是否需要鉴权
@@ -66,12 +78,12 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-})
+}) */
 
 // 全局前置路由守卫----初始化的时候被调用、每次路由切换之后被调用
-router.afterEach((to, from) => {
+/* router.afterEach((to, from) => {
   console.log('后置路由守卫', to, from);
   document.title = to.meta.title || '北部湾大学';
-})
+}) */
 
 export default router;
